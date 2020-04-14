@@ -2,11 +2,20 @@
 
    var mybutton1 = document.getElementById('button1');
 
+
    var mybutton2 =  document.getElementById ('button2');
+
+
 
    mybutton1.addEventListener('click', loadCustomer);
 
    mybutton2.addEventListener('click', loadCustomers);
+
+
+   
+var myDiv1 =document.getElementById('customer'),
+
+myDiv2 =document.getElementById('customers');
 
 
    function loadCustomer() {
@@ -16,14 +25,16 @@
     let request = new XMLHttpRequest();
 
     
-    request.onload = function () {
+    request.onreadystatechange = function () {
 
-        console.log(this.responseText)
+      myDiv1.innerHTML= this.responseText
 
     }
   request.open('GET', 'customer.json');
 
     request.send();
+
+
    }
 
 function loadCustomers() {
@@ -33,9 +44,9 @@ function loadCustomers() {
     let request = new XMLHttpRequest();
 
     
-    request.onload = function () {
+    request.onreadystatechange = function () {
 
-        console.log(this.responseText)
+      myDiv2.innerHTML= this.responseText
 
     }
   request.open('GET', 'customers.json');
@@ -44,3 +55,4 @@ function loadCustomers() {
 
 
 }
+
