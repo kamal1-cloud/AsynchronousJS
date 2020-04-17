@@ -1,4 +1,4 @@
-
+/* 
 
 var btn = document.getElementById('button');
 
@@ -12,7 +12,7 @@ var btn = document.getElementById('button');
 
     
 
-    request.onreadystatechange = function () {
+    request.onload = function () {
 
       show.innerHTML=this.responseText;
 
@@ -22,6 +22,28 @@ var btn = document.getElementById('button');
     request.send();
 
   
-   }
+   } */
    
+   var button = document.getElementById('button');
 
+
+
+   
+  function loadData() {
+
+       const xhr = new XMLHttpRequest();
+       
+       xhr.onload = function() {
+
+        document.getElementById('output').innerHTML=this.responseText
+
+       }
+      
+
+       xhr.open('GET', 'data.txt');
+       xhr.send();
+
+   }
+  
+   
+   button.addEventListener('click', loadData) ;

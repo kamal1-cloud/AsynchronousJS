@@ -13,9 +13,9 @@
 
 
    
-var myDiv1 =document.getElementById('customer'),
 
-myDiv2 =document.getElementById('customers');
+   this.responseText
+ var myDiv2 =document.getElementById('customers');
 
 
    function loadCustomer() {
@@ -25,9 +25,9 @@ myDiv2 =document.getElementById('customers');
     let request = new XMLHttpRequest();
 
     
-    request.onreadystatechange = function () {
+    request.onload = function () {
 
-      myDiv1.innerHTML= this.responseText
+      document.getElementById('customer').innerHTML = `name: ${ob1.name}<br>company: ${ob1.company}<br>phone: ${ob1.phone}<br>id: ${ob1.id}` ;
 
     }
   request.open('GET', 'customer.json');
@@ -44,7 +44,7 @@ function loadCustomers() {
     let request = new XMLHttpRequest();
 
     
-    request.onreadystatechange = function () {
+    request.onload = function () {
 
       myDiv2.innerHTML= this.responseText
 
@@ -56,3 +56,16 @@ function loadCustomers() {
 
 }
 
+output : `<ul><li> id : ${objet.id} </li></ul>`
+
+
+var output = '';
+for(var i in users){
+    output += '<ul>' +
+    '<li>ID : '+users[i].id+'</li>' +
+    '<li>Name : '+users[i].name+'</li>' +
+    '<li>Company : '+users[i].company+'</li>' +
+    '<li>Phone : '+users[i].phone+'</li>' +
+    '</ul>';
+}
+document.getElementById('customers').innerHTML = output;
