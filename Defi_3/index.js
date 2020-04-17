@@ -6,14 +6,8 @@ request.open('GET', './db.json');
 
    request.onload = function () {
 
-    document.getElementById('btn').innerHTML=this.responseText
-   var temp = "";
-  responseText.array.forEach(element => {
-      temp +="<tr>" ;
-      temp += "<tr>"+books.author+"<tr>";
-      temp += "<tr>"+books.country+"<tr>";
-      temp += "<tr>"+books.title+"<tr>";
-  });
+    console.log(this.responseText);
+
    }
  
 
