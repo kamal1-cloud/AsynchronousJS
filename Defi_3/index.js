@@ -14,9 +14,9 @@ request.open('GET', './db.json');
    request.send();
   */
 
-   // *****************************XMLhttprequest POST******************************
+// *****************************XMLhttprequest POST******************************
 
-    /*  const params = {
+/*  const params = {
         
         "author": "kamal",
         "country": "morocco",
@@ -48,7 +48,7 @@ request.open('GET', './db.json');
     request.send(JSON.stringify(params));// Make sure to stringify
  
      */
-      
+
 
 //  ******************* Fetch get request******************************
 
@@ -61,38 +61,40 @@ request.open('GET', './db.json');
   .then((data) => console.log(data)); */
 
 //********************************** */ fetch post request****************************************/
- 
 
-fetch('./db.json',{
-        method : 'POST',
-        headers: {
-            'content-type' : 'application/json'
-        },
-       body : JSON.stringify({
-        "author": "kamal",
-        "country": "morocco",
-        "imageLink": "images/things-fall-apart.jpg",
-        "language": "arab",
-        "link": "https://en.wikipedia.org/wiki/Things_Fall_Apart\n",
-        "pages": 209,
-        "title": "Things Fall Apart",
-        "year": 1958
-       })
- 
-    })
-   
-    .then(res => {
-      return res.json()
+// 405 veut dire que la méthode  que tu as utilisé n'est pas autorisée
+fetch('http://localhost:3000/books', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      // la recherche ajout et mise à jour se fait par id donc il faut ajouté un id dans la base de donné "db.json"
+      "id": 4,
+      "author": "kamal",
+      "country": "morocco",
+      "imageLink": "images/things-fall-apart.jpg",
+      "language": "arab",
+      "link": "https://en.wikipedia.org/wiki/Things_Fall_Apart",
+      "pages": 209,
+      "title": "Things Fall Apart",
+      "year": 1958
     })
 
-.then(data => console.log(data))
+  })
+  // à revoir 
+  .then(res => {
+    return res.json();
+  })
 
-.then(error => console.log('ERROR'))
+  .then(data => console.log(data))
+
+  .then(error => console.log('ERROR'))
 
 
- 
 
-   
+
+
 
 //******************************* */ Fetch  put request******************************/
 
@@ -162,7 +164,7 @@ fetch('./db.json',{
  * async/await
  */
 
- /*   async function getData() {
+/*   async function getData() {
     const response =await fetch('db.json');
     const data = await response.json();
     document.getElementById('btn').innerHTML=data;
