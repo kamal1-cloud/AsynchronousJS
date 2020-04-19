@@ -34,7 +34,7 @@ var btn = document.getElementById('button');
        const xhr = new XMLHttpRequest();
        
        xhr.onload = function() {
-
+            
         document.getElementById('output').innerHTML=this.responseText
 
        }
